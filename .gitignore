@@ -1,7 +1,7 @@
 .env
-node_modules
-dist
+node_modules/
+dist/
 yarn.lock
 yarn-error.log
-logs
-coverage
+logs/
+coverage/
