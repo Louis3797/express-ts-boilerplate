@@ -1,9 +1,10 @@
-import express, { Express, Request, Response } from "express";
-import * as dotenv from "dotenv";
-import cors from "cors";
-import helmet from "helmet";
-import compression from "compression";
-// import shouldCompress from "./utils/shouldCompress";
+import express, { Express, Request, Response } from 'express';
+import * as dotenv from 'dotenv';
+import cors from 'cors';
+import helmet from 'helmet';
+import compression from 'compression';
+import logger from './utils/logger';
+import shouldCompress from './utils/shouldCompress';
 
 dotenv.config();
 
@@ -18,15 +19,15 @@ app.use(
 );
 
 // Helmet is used to secure this app by configuring the http-header
-app.use(helmet);
+app.use(helmet());
 
 // Compression is used to reduce the size of the response body
-app.use(compression());
+app.use(compression({ filter: shouldCompress }));
 
-app.get("/", (_req: Request, res: Response) => {
-  res.send(`Hello World!`);
+app.get('/', (_req: Request, res: Response) => {
+  res.send('Hello World!');
 });
 
 app.listen(parseInt(process.env.PORT), () => {
-  console.log(`Server is running on Port: ${process.env.PORT}`);
+  logger.log('info', `Server is running on Port: ${process.env.PORT}`);
 });
