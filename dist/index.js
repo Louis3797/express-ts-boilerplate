@@ -36,10 +36,13 @@ const shouldCompress_1 = __importDefault(require("./utils/shouldCompress"));
 dotenv.config();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
+    // origin is given a array if we want to have multiple origins later
     origin: [process.env.CORS_ORIGIN],
     credentials: true,
 }));
+// Helmet is used to secure this app by configuring the http-header
 app.use((0, helmet_1.default)());
+// Compression is used to reduce the size of the response body
 app.use((0, compression_1.default)({ filter: shouldCompress_1.default }));
 app.get('/', (_req, res) => {
     res.send('Hello World!');
