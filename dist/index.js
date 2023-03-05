@@ -26,28 +26,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
 const dotenv = __importStar(require("dotenv"));
-const cors_1 = __importDefault(require("cors"));
-const helmet_1 = __importDefault(require("helmet"));
-const compression_1 = __importDefault(require("compression"));
+const app_1 = __importDefault(require("./app"));
 const logger_1 = __importDefault(require("./utils/logger"));
-const shouldCompress_1 = __importDefault(require("./utils/shouldCompress"));
 dotenv.config();
-const app = (0, express_1.default)();
-app.use((0, cors_1.default)({
-    // origin is given a array if we want to have multiple origins later
-    origin: [process.env.CORS_ORIGIN],
-    credentials: true,
-}));
-// Helmet is used to secure this app by configuring the http-header
-app.use((0, helmet_1.default)());
-// Compression is used to reduce the size of the response body
-app.use((0, compression_1.default)({ filter: shouldCompress_1.default }));
-app.get('/', (_req, res) => {
-    res.send('Hello World!');
-});
-app.listen(parseInt(process.env.PORT), () => {
+app_1.default.listen(parseInt(process.env.PORT), () => {
     logger_1.default.log('info', `Server is running on Port: ${process.env.PORT}`);
 });
 //# sourceMappingURL=index.js.map
