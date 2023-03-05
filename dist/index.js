@@ -3,7 +3,7 @@ import * as dotenv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
 import compression from "compression";
-import shouldCompress from "./utils/shouldCompress";
+// import shouldCompress from "./utils/shouldCompress";
 dotenv.config();
 const app = express();
 app.use(cors({
@@ -14,7 +14,7 @@ app.use(cors({
 // Helmet is used to secure this app by configuring the http-header
 app.use(helmet);
 // Compression is used to reduce the size of the response body
-app.use(compression({ filter: shouldCompress }));
+app.use(compression());
 app.get("/", (_req, res) => {
     res.send(`Hello World!`);
 });
