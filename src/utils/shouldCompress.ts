@@ -7,7 +7,7 @@ import type { Request, Response } from "express";
  * @param res HTTPs Response
  * @returns Returns false if request header contains x-no-compression
  */
-export default function shouldCompress(req: Request, res: Response): boolean {
+function shouldCompress(req: Request, res: Response): boolean {
   if (req.headers["x-no-compression"]) {
     // don't compress responses with this request header
     return false;
@@ -16,3 +16,5 @@ export default function shouldCompress(req: Request, res: Response): boolean {
   // fallback to standard filter function
   return compression.filter(req, res);
 }
+
+export default shouldCompress;
