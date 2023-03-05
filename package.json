@@ -5,14 +5,17 @@
   "author": "Louis-Kaan Ay",
   "license": "MIT",
   "private": false,
-  "main": "index.ts",
-  "scripts": {
+  "main": "index.js",
+  "type": "module",
+  "scripts": { 
+    "dev": "tsc --project './tsconfig.json' --watch & NODE_ENV=development nodemon dist/index.js",  
     "build": "tsc --project './tsconfig.json'",
-    "dev": "tsc --project './tsconfig.json' --watch & NODE_ENV=development nodemon dist",
+    "start": "yarn run build && NODE_ENV=production node dist/index.js",
     "watch": "tsc -w"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "mysql2": "^3.2.0",
@@ -24,6 +27,7 @@
   "devDependencies": {
     "@tsconfig/node-lts-strictest-esm": "^18.12.1",
     "@types/bcryptjs": "^2.4.2",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.17",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/passport": "^1.0.12",
