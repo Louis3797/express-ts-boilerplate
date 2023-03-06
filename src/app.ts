@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
-import shouldCompress from './utils/compresssFilter.util';
+import shouldCompress from './utils/compressFilter.util';
 
 dotenv.config();
 
