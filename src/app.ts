@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
-import shouldCompress from './utils/compressFilter.util';
+import compressFilter from './utils/compressFilter.util';
 
 dotenv.config();
 
@@ -21,7 +21,7 @@ app.use(
 app.use(helmet());
 
 // Compression is used to reduce the size of the response body
-app.use(compression({ filter: shouldCompress }));
+app.use(compression({ filter: compressFilter }));
 
 app.get('/', (_req: Request, res: Response) => {
   res.send('Hello World!');
