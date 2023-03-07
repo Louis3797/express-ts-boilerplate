@@ -1,4 +1,4 @@
-import config from 'src/config/config';
+import config from '../config/config';
 import { createLogger, format, transports } from 'winston';
 
 const logger = createLogger({
