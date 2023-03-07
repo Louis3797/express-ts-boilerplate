@@ -1,18 +1,16 @@
 import express, { Express, Request, Response } from 'express';
-import * as dotenv from 'dotenv';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
 import compressFilter from './utils/compressFilter.util';
-
-dotenv.config();
+import config from './config/config';
 
 const app: Express = express();
 
 app.use(
   cors({
     // origin is given a array if we want to have multiple origins later
-    origin: [process.env.CORS_ORIGIN],
+    origin: [config.cors_origin],
     credentials: true,
   })
 );
