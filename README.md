@@ -135,6 +135,13 @@ Go to the project directory
   yarn install
 ```
 
+Set your environment variables following the provided `.env.example` template.
+```bash
+  cp .env.example .env
+```
+
+If desired, change the default values in your preferred code editor.
+
 ### Linting
 
 ```bash
