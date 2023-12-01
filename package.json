@@ -54,7 +54,7 @@
     "prettier-eslint": "^15.0.1",
     "supertest": "^6.3.3",
     "ts-jest": "^29.0.5",
-    "typescript": "*"
+    "typescript": "^4.9"
   },
   "repository": {
     "type": "git",
